@@ -4,7 +4,7 @@
 
 | Archivo | Tipo | Uso en el informe |
 | --- | --- | --- |
-| `../Informe EjecutivoPasantias 1 mes.docx` | Word | Guía narrativa, títulos, contexto, diagnóstico y recomendaciones. |
+| `../Informe EjecutivoPasantias 1 mes.docx` | Word | Guía narrativa, títulos, contexto, análisis y recomendaciones. |
 | `../UTN BA - Reporte de Gestión de Pasantías.pptx.pdf` | PDF, 7 páginas | Indicadores, nómina de convenios y distribuciones por área e industria. |
 | `../Talentia-logo.png` | Imagen | Referencia de identidad de Talentia. |
 
@@ -16,7 +16,7 @@
 | Métricas | PDF, página 2; Word, sección 5 | 35 ofertas, 20 empresas, 506 postulaciones, promedio 14,5 y una pasantía. |
 | Distribución por área | PDF, página 6; Word, sección 7 | Nueve categorías que suman 35 ofertas. |
 | Distribución por industria | PDF, página 5 | Cinco categorías; ver inconsistencia documentada debajo. |
-| Diagnóstico | PDF, páginas 3–4; Word, sección 7 | 771 organizaciones, 38 convenios en plataforma y 104 convenios institucionales informados. |
+| Análisis | PDF, páginas 3–4; Word, sección 7 | 771 organizaciones, 38 convenios en plataforma y 104 convenios institucionales informados. |
 | Recomendaciones | Word, sección 9 | Marco unificado, autonomía operativa y activación progresiva. |
 
 ## Decisiones e inconsistencias

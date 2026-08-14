@@ -1,7 +1,7 @@
 export const report = {
   period: '13 de julio al 13 de agosto',
   institution: 'UTN.BA — Facultad Regional Buenos Aires',
-  objective: 'Evaluar el rendimiento inicial de la plataforma digital, dimensionar la cartera real de convenios y establecer un diagnóstico sobre la optimización administrativa y la independencia de gestión de la Facultad.',
+  objective: 'Evaluar el rendimiento inicial de la plataforma digital, dimensionar la cartera real de convenios y establecer un análisis sobre la optimización administrativa y la independencia de gestión de la Facultad.',
   metrics: [
     { value: '35', label: 'Ofertas publicadas' }, { value: '20', label: 'Empresas con búsquedas' },
     { value: '506', label: 'Postulaciones' }, { value: '14,5', label: 'Postulaciones por oferta' },
