@@ -1,0 +1,8 @@
+node_modules/
+.next/
+*.tsbuildinfo
+.vercel/
+visual-*.png
+final-*.png
+pdf-*.png
+check-*.png

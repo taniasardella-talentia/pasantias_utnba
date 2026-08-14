@@ -1,0 +1,29 @@
+'use client';
+import { report } from './report-data';
+
+const pct = (n:number) => `${(n/35*100).toFixed(1).replace('.', ',')}%`;
+
+function Donut({kind}:{kind:'areas'|'industries'}) {
+  const data=report[kind]; let cursor=0;
+  const stops=data.map((d)=>{const start=cursor; cursor+=d[1]/35*360; return `${d[2]} ${start}deg ${cursor}deg`}).join(',');
+  return <div className="donut" style={{background:`conic-gradient(${stops})`}} role="img" aria-label={`Distribución de 35 ofertas por ${kind==='areas'?'área':'industria'}`}><div><strong>35</strong><span>ofertas</span></div></div>;
+}
+
+function Chart({kind,title}:{kind:'areas'|'industries';title:string}) {
+ const data=report[kind];
+ return <div className="chart"><Donut kind={kind}/><div className="legend">{data.map(([label,n,color])=><div className="legendRow" key={label}><i style={{background:color}}/><span>{label}</span><b>{n} <small>{pct(n)}</small></b></div>)}</div></div>
+}
+
+export default function Home(){return <>
+ <header className="top"><a href="#inicio" className="brand">✳ <span>UTN.BA</span></a><nav aria-label="Navegación principal"><a href="#resultados">Resultados</a><a href="#diagnostico">Diagnóstico</a><a href="#recomendaciones">Recomendaciones</a></nav><a className="download" href="/Informe-Ejecutivo-Pasantias-UTNBA.pdf" download>Descargar informe</a></header>
+ <main>
+  <section id="inicio" className="hero"><div className="eyebrow">Informe ejecutivo · Primera gestión</div><h1>Gestión del Módulo<br/>de Pasantías</h1><p className="lead">Primer mes de actividad del módulo de pasantías en el portal Talentia UTN.BA.</p><div className="heroMeta"><span><b>Período</b>{report.period}</span><span><b>Institución</b>Facultad Regional Buenos Aires</span></div><div className="scroll">Desplazá para recorrer el informe ↓</div></section>
+  <section className="intro"><div><div className="kicker">01 · Resumen</div><h2>Una primera lectura del desempeño</h2></div><p>La adopción inicial registra un alto interés estudiantil. A la vez, muestra que el crecimiento de la cartera activa depende de la gestión interna para digitalizar convenios y activar a las organizaciones.</p></section>
+  <section id="resultados" className="light"><div className="sectionHead"><div><div className="kicker">02 · Métricas del primer mes</div><h2>Actividad e interés estudiantil</h2></div><p>El portal reunió 506 postulaciones en 35 búsquedas: un promedio de 14,5 por oferta.</p></div><div className="metrics">{report.metrics.map(m=><article key={m.label}><strong>{m.value}</strong><span>{m.label}</span></article>)}</div><div className="callout"><span>1</span><div><b>Pasantía activa en curso</b><p>El informe fuente registra una incorporación en Furlong Incoming S.A. durante el período informado.</p></div></div></section>
+  <section className="dark"><div className="sectionHead"><div><div className="kicker">03 · Alcance de la demanda</div><h2>La tecnología concentra la mayor parte de las búsquedas</h2></div><p>Sistemas, desarrollo y software explican el 42,9% de las ofertas. La demanda también alcanza perfiles de ingeniería, marketing, finanzas y gestión.</p></div><Chart kind="areas" title="Distribución por área"/></section>
+  <section className="light"><div className="sectionHead"><div><div className="kicker">04 · Sectores</div><h2>Una demanda distribuida entre tecnología e industria</h2></div><p>Tecnología representa 14 de las 35 ofertas, seguida por registros sin especificar y manufactura.</p></div><Chart kind="industries" title="Distribución por industria"/><p className="note">Nota: el PDF fuente consigna Retail como 4 (8,6%), una combinación internamente inconsistente. Para preservar el total de 35 y el porcentaje, esta reconstrucción utiliza 3 ofertas.</p></section>
+  <section id="diagnostico" className="diagnosis"><div className="sectionHead"><div><div className="kicker">05 · Diagnóstico actual</div><h2>El potencial está en activar la cartera existente</h2></div></div><div className="bigStats"><article><strong>771</strong><span>organizaciones registradas</span></article><article><strong>38</strong><span>con convenio firmado en plataforma</span></article><article><strong>104</strong><span>convenios marco informados en la cartera institucional</span></article></div><div className="twoCol"><p>La plataforma ya está operativa. El próximo salto no requiere un desarrollo tecnológico: exige ordenar, digitalizar y activar convenios bajo gestión de la Facultad.</p><p><b>Dos universos, una prioridad.</b> El PDF contabiliza el estado digital de 771 organizaciones; el Word informa 104 convenios institucionales. No deben leerse como bases equivalentes.</p></div></section>
+  <section className="light"><div className="sectionHead"><div><div className="kicker">06 · Convenios en plataforma</div><h2>38 organizaciones ya tienen el marco habilitado</h2></div><p>La nómina corresponde exclusivamente a empresas con convenio firmado y usuario activo en el portal.</p></div><div className="companyGrid">{report.companies.map(c=><span key={c}>{c}</span>)}</div></section>
+  <section id="recomendaciones" className="recommend"><div className="kicker">07 · Recomendaciones</div><h2>Un marco común, con gestión operativa autónoma</h2><div className="recommendGrid"><article><b>01</b><h3>Convenio marco unificado</h3><p>Sostener un único paraguas institucional para ampliar oportunidades entre Ingenierías y Extensión.</p></article><article><b>02</b><h3>Gestión separada por área</h3><p>Administrar los acuerdos individuales con autonomía, responsabilidades claras y sin cuellos de botella cruzados.</p></article><article><b>03</b><h3>Activación progresiva</h3><p>Digitalizar la cartera existente y comunicar a las empresas habilitadas que ya pueden operar en el portal.</p></article></div></section>
+  <footer><div className="brand">✳ <span>UTN.BA</span></div><p>Gestión del Módulo de Pasantías · Talentia</p><p>{report.period}</p></footer>
+ </main></>}
